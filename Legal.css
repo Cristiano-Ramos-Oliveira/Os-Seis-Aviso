@@ -1,0 +1,356 @@
+/*
+|=============================================|
+| 1. RESET BÁSICO E ESTRUTURA FLEXBOX (FOOTER) |
+|=============================================|
+*/
+
+/* Reset e box-sizing: border-box para todos os elementos */
+* {
+    box-sizing: border-box; 
+}
+
+/* Garante que o corpo da página ocupe 100% da altura e remove barras de rolagem horizontal */
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; 
+    
+    /* ESSENCIAL: Evita a barra de rolagem horizontal indesejada */
+    overflow-x: hidden; 
+    
+    /* Configuração para o Sticky Footer */
+    display: flex; 
+    flex-direction: column;
+}
+
+/* Zera margens e paddings de outros elementos, exceto HTML/BODY que já foram tratados */
+*:not(html):not(body) {
+    margin: 0;
+    padding: 0;
+}
+
+/* O conteúdo principal deve crescer para empurrar o footer para baixo */
+main {
+    flex-grow: 1;
+}
+
+/*
+|============================|
+| 2. ESTILOS DO CABEÇALHO (HEADER) |
+|============================|
+*/
+header {
+    width: 100%;
+    background: linear-gradient(90deg, #0077b6, #005a8d);
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-bottom: 5px solid #ffc300;
+}
+
+header img {
+    max-width: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    transition: transform 0.5s ease;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+header img:hover {
+    transform: scale(1.1);
+}
+
+header h1 {
+    font-size: 2.8rem;
+    margin-top: 15px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para o slogan */
+.slogan {
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #ffd766;
+}
+
+/*
+|==============================|
+| 3. ESTILOS DA NAVEGAÇÃO (NAV) |
+|==============================|
+*/
+
+.main-menu {
+    background-color: #0096c7;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.main-menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.main-menu li {
+    margin: 0 25px;
+}
+
+.main-menu a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.main-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: #ffc300;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.4s ease;
+}
+
+.main-menu a:hover::after {
+    width: 100%;
+}
+
+.main-menu a:hover {
+    color: #ffc300;
+    text-shadow: 0 0 5px #fff;
+}
+
+/*
+|=============================================|
+| 4. ESTILOS DO CONTEÚDO PRINCIPAL (ANALOGIAS) |
+|=============================================|
+*/
+
+.container-analogias {
+    max-width: 1200px; /* Ajustado para um valor padrão de desktop */
+    margin: 40px auto; 
+    padding: 0 20px;
+}
+
+.introducao {
+    text-align: center;
+    margin-bottom: 50px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.introducao h2 {
+    color: #0077b6;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.introducao p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.exemplos h2 {
+    text-align: center;
+    color: #005a8d;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+/* Container para organizar os cards em grid */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 40px; /* Reduzido o gap */
+    padding: 10px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 5px solid #0096c7; 
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+    color: #0077b6;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.card h3 i {
+    margin-right: 10px;
+    /* CORRIGIDO: Cor do ícone voltada para o amarelo de destaque */
+    color: #ffc300; 
+    font-size: 1.2em;
+}
+
+.card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 10px; 
+}
+
+
+/*
+|============================|
+| 5. ESTILOS DO RODAPÉ (FOOTER) |
+|============================|
+*/
+
+footer {
+    background: linear-gradient(90deg, #005a8d, #0077b6); 
+    color: #fff;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    text-align: center;
+    /* Aumentar o PADDING AQUI: O primeiro valor controla a altura (topo/base) */
+    padding: 30px 0; /* Mudei de 15px para 30px */
+    
+    margin-top: 40px; 
+    border-top: 5px solid #ffc300;
+}
+
+/* O restante do seu código CSS pode permanecer igual */
+footer a {
+    color: #ffc300; 
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+/* ... etc ... */
+footer a {
+    color: #ffc300; 
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer-links, .voltar-inicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.whatsapp-link {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.whatsapp-link i {
+    margin-right: 5px;
+}
+
+.mensagem-final {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.creditos {
+    font-size: 0.85em;
+    opacity: 0.8;
+}
+
+/*
+|=============================================|
+| 6. RESPONSIVIDADE (AJUSTES PARA MOBILE) |
+|=============================================|
+*/
+
+@media (max-width: 768px) {
+    /* HEADER: Vertical em telas pequenas */
+    header {
+        flex-direction: column; 
+        padding: 20px 10px;
+    }
+    
+    header img {
+        margin: 0 auto 10px auto; 
+    }
+    
+    header h1 {
+        font-size: 2rem; 
+        letter-spacing: 2px;
+    }
+
+    /* MENU: Ajuste de espaçamento para evitar overflow */
+    .main-menu ul {
+        gap: 10px; 
+        padding: 10px;
+        flex-wrap: wrap;
+    }
+
+    .main-menu li {
+          margin: 0 8px; 
+    }
+    
+    .main-menu a {
+          font-size: 1rem;
+    }
+    
+    /* MAIN: Layout de uma coluna */
+    .container-analogias {
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+    
+    .introducao {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .introducao h2 {
+        font-size: 1.8rem;
+    }
+
+    /* FOOTER */
+    .footer-links {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
